@@ -1,5 +1,4 @@
-const PESO_PADRAO_EM_KG = 80;
-const ALTURA_PADRAO_EM_CM = 178;
+const readline = require('readline-sync');
 
 function calculaImc(peso, altura) {
   console.log(`Peso: ${peso}, Altura: ${altura}`);
@@ -12,9 +11,11 @@ function calculaImc(peso, altura) {
   return imc;
 }
 
-// A função main é o ponto de partida do nosso programa 
 function main() {
-  const imc = calculaImc(PESO_PADRAO_EM_KG, ALTURA_PADRAO_EM_CM);
+  const peso = readline.questionInt('Qual o seu peso? (em kg) ');
+  const altura = readline.questionInt('Qual a sua altura? (em cm) ');
+  
+  const imc = calculaImc(peso, altura);
 
   console.log(`IMC: ${imc.toFixed(2)}`);
 }
