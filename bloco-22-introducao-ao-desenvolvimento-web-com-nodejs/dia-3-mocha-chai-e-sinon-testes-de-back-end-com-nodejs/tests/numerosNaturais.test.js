@@ -18,4 +18,36 @@ describe('Executa a função numerosNaturais', () => {
       });
     });
   });
+
+  describe('quando o número for menor que 0', () => {
+    describe('a resposta', () => {
+      it('é uma "string"', () => {
+        const resposta = naturaisFn(-10);
+
+        expect(resposta).to.be.a('string');
+      });
+
+      it('é igual a "negativo"', () => {
+        const resposta = naturaisFn(-10);
+
+        expect(resposta).to.be.equals('negativo');
+      });
+    });
+  });
+
+  describe('quando o número for igual a 0', () => {
+    describe('a resposta', () => {
+      it('é uma "string"', () => {
+        const resposta = naturaisFn(0);
+
+        expect(resposta).to.be.a('string');
+      });
+
+      it('é igual a "neutro"', () => {
+        const resposta = naturaisFn(0);
+
+        expect(resposta).to.be.equals('neutro');
+      });
+    });
+  });
 });
