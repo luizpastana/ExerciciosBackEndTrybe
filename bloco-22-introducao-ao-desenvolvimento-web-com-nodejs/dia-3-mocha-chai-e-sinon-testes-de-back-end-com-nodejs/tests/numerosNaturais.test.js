@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const naturaisFn = require('./numerosNaturais');
+const naturaisFn = require('../numerosNaturais');
 
 describe('Executa a função numerosNaturais', () => {
   describe('quando o número for maior que 0', () => {
@@ -47,6 +47,22 @@ describe('Executa a função numerosNaturais', () => {
         const resposta = naturaisFn(0);
 
         expect(resposta).to.be.equals('neutro');
+      });
+    });
+  });
+
+  describe('quando o parâmetro passado não é um número', () => {
+    describe('a resposta', () => {
+      it('é uma "string"', () => {
+        const resposta = naturaisFn('AAAA');
+  
+        expect(resposta).to.be.a('string');
+      });
+  
+      it('é igual a "o parâmetro deve ser um número"', () => {
+        const resposta = naturaisFn('AAAA');
+  
+        expect(resposta).to.be.equals('o parâmetro deve ser um número');
       });
     });
   });
