@@ -41,6 +41,28 @@ async function filterSimpsons() {
   await fs.writeFile('./simpsons.json', JSON.stringify(newArray));
 }
 
+async function createSimpsonsFamily() {
+  const fileContent = await fs
+    .readFile('./Trybe_e_os_simpsons.json', 'utf-8');
+  
+  const simpsons = JSON.parse(fileContent);
+
+  const familyIds = [1, 2, 3, 4];
+  const simpsonsFamily = simpsons
+    .filter((simpson) => familyIds.includes(Number(simpson.id)));
+
+  await fs.writeFile('./simpsonsFamily.json', JSON.stringify(simpsonsFamily));
+}
+
+async function addNelsonToFamily() {
+  const fileContent = await fs
+    .readFile('./simpsonsFamily.json', 'utf-8');
+  
+  const simpsonsFamily = JSON.parse(fileContent);
+  simpsonsFamily.push({ id: '8', name: 'Nelson Muntz' });
+  await fs.writeFile('./simpsonsFamily.json', JSON.stringify(simpsonsFamily));
+}
+
 // async function readAllComAsyncAwait() {
 //   const fileContent = await fs.readFile('./simpsons.json', 'utf-8');
 //   const simpsons = JSON.parse(fileContent);
@@ -50,7 +72,9 @@ async function filterSimpsons() {
 // }
 
 async function main() {
-  await filterSimpsons();
+  addNelsonToFamily();
+  // createSimpsonsFamily();
+  // await filterSimpsons();
   // const simpson = await getSimpsonById(3);
   // console.log(simpson);
 }
